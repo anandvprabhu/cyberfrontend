@@ -1,0 +1,21 @@
+*{
+    padding: 0;
+    margin: 0;
+    
+}
+.AdminHomeContainer
+{
+    height: 100%;
+    width: 100%;
+    background-color:lightgrey;
+}
+.flex
+{
+    display: flex;
+    justify-content:space-evenly;
+}
+.MuiCollapse-wrapper.MuiCollapse-vertical.css-smkl36-MuiCollapse-wrapper {
+    width: auto;
+    border: 1px solid black;
+    max-height: 20vh;
+}

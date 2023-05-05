@@ -1,0 +1,85 @@
+.news-app {
+    display: flex;
+    justify-content: center;
+}
+
+.news-item {
+    width: 500px;
+    padding: 20px;
+    border: 1px solid;
+    margin-bottom: 20px;
+}
+
+.news_heading
+{
+    font-size: calc(2em + 2vw);
+	font-weight: 700;
+	letter-spacing: .01em;
+	/* padding: 10rem 0 0 4.5rem; */
+	text-shadow: .022em .022em .022em #111;
+	color: #3B71CA;
+    margin: 2% 0;
+    text-align: center;
+    height: 7vh;
+}
+.news-img {
+    width: 400px;
+}
+.navbar-collapse
+{
+    justify-content: flex-end;
+}
+.navbar-nav
+{
+    width: 50vw;
+    /* border: 1px solid green; */
+    padding: 0;
+}
+.nav-item
+{
+    width: 40%;
+    /* border: 1px solid black; */
+}
+.news-item 
+{
+    background-image: linear-gradient(131.83deg, #FFFAFA 0%,     #FFF7F7 99.21%);
+    /* border:none; */
+    border:none;
+}
+.reg_form
+{
+    width: 50vw;
+    margin: auto;
+    z-index: 9;
+}
+.mb-3
+{
+    text-align: center;
+}
+.d-flex
+{
+    margin-top:2%;
+}
+#textAreaExample1
+{
+    border: 1px solid #BDBDBD;
+    margin-bottom: 2%;
+}
+#textAreaExample1:focus
+{
+    border: none;
+}
+.lead
+{
+    font-size: 0.7em;
+}
+.form_link
+{
+    color: rgba(255,255,255,.55);
+}
+.form_link:hover
+{
+    color: white;
+}
+
+

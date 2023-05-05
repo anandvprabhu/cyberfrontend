@@ -1,0 +1,50 @@
+*
+{
+  margin:0;
+  padding: 0;
+}
+.my-5
+{
+  height: 100vh;
+  margin: auto !important;
+}
+.row
+{
+  height: 100vh;
+  margin: 0;
+}
+.col-md-6
+{
+  height: 100vh;
+}
+.rounded-start
+{
+  height: 90vh;
+  margin: 5% 0;
+}
+.flex-column
+{
+  height: 80vh;
+  margin: 10% 0;
+}
+.forgot_link
+{
+  cursor:initial;
+}
+.forgot_password
+{
+  color: #757575;
+  --mdb-text-opacity: 1;
+  font-size: 0.875em;
+  cursor: pointer;
+}
+.forgot_password:hover
+{
+  /* color:black; */
+  color: black;
+}
+@media (min-width: 1025px) {
+    .h-custom-2 {
+      height: 100%;
+      }
+    }
