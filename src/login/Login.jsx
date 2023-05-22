@@ -55,18 +55,20 @@ function Login() {
         <MDBRow className='g-0'>
 
           <MDBCol md='6'>
-            <MDBCardImage src='https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg' alt="login form" className='rounded-start w-100'/>
+            <MDBCardImage src='https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp' alt="login form" className='rounded-start w-100'/>
           </MDBCol>
-
+          
           <MDBCol md='6'>
             <MDBCardBody className='d-flex flex-column'>
             <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-              <div className='d-flex flex-row mt-2'>
+              
+              <h5 className="fw-normal my-4 pb-3" style={{letterSpacing: '1px'}}>Cyber Complaint Automation System</h5>
+
+              <div className='d-flex flex-row mt-1'>
                 {/* <MDBIcon fas icon="cubes fa-3x me-3" style={{ color: '#ff6219' }}/>😄 */}
-                <span className="h1 fw-bold mb-0">Welcome Back :)</span>
+                <span className="h1 fw-bold mb-3">Login</span>
               </div>
 
-              <h5 className="fw-normal my-4 pb-3" style={{letterSpacing: '1px'}}>To connect with us please login with your personal info</h5>
               
               {/* Login Form */}
               <form onSubmit={handleSubmit}>

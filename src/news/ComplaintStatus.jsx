@@ -43,22 +43,6 @@ export default function ComplaintStatus() {
                         26/04/2023 
                       </td>
                     </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Credit Card</td>
-                      <td>In progress</td>
-                      <td>
-                        26/04/2023
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Debt</td>
-                      <td>In progress</td>
-                      <td>
-                        27/04/2023
-                      </td>
-                    </tr>
                   </MDBTableBody>
                 </MDBTable>
               </MDBCardBody>
