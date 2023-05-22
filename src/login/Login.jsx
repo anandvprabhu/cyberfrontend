@@ -10,8 +10,23 @@ import axios from '../api/axios';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 // const LOGIN_URL = '/auth'
+import NewsItem from '../news/NewsItem';
+import { withTheme } from '@emotion/react';
 
 function Login() {
+  const [articles, setArticles] = useState([])
+
+  useEffect(() => {
+      const getArticles = async () => {
+          const response = await axios.get(`https://newsapi.org/v2/everything?q=cyber+news&apiKey=441cee269ba9433fae71d6420cc01c1b`)
+          setArticles(response.data.articles)
+          console.log(response)
+      }
+
+      getArticles()
+  }, [])
+
+
   const {setAuth} = useContext(AuthContext);
   const userRef=useRef();
   const errRef=useRef();
@@ -55,7 +70,16 @@ function Login() {
         <MDBRow className='g-0'>
 
           <MDBCol md='6'>
-            <MDBCardImage src='https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp' alt="login form" className='rounded-start w-100'/>
+            {articles.map(article => {
+                  return(
+                      <NewsItem 
+                          title={article.title}
+                          description={article.description}
+                          url={article.url}
+                          urlToImage={article.urlToImage} 
+                      />
+                  )
+              })}
           </MDBCol>
           
           <MDBCol md='6'>

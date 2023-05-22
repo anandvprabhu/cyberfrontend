@@ -53,3 +53,9 @@
 {
   height: 75%;
 }
+
+.card-body{
+  position: fixed;
+  border: 2px solid lightgray;
+}
+
