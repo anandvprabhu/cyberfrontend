@@ -17,13 +17,13 @@ import '../admin/admin.css';
 export default function ComplaintStatus() {
   return (
     // <section className="" style={{ backgroundColor: "#eee" }}>
-    <div className="AdminHomeContainer">
-      <MDBContainer className="py-5 h-100">
-        <MDBRow className="d-flex justify-content-center align-items-center">
-          <MDBCol lg="9" xl="7">
-            <MDBCard className="rounded-3">
-              <MDBCardBody className="p-4">
-                <h4 className="text-center my-3 pb-3">Complaints Registered</h4>
+    // <div className="AdminHomeContainer">
+    //   <MDBContainer className="py-5 h-100">
+    //     <MDBRow className="d-flex justify-content-center align-items-center">
+    //       <MDBCol lg="9" xl="7">
+    //         <MDBCard className="rounded-3">
+    //           <MDBCardBody className="p-4">
+    //             <h4 className="text-center my-3 pb-3">Complaints Registered</h4>
                 <MDBTable className="mb-4">
                   <MDBTableHead>
                     <tr>
@@ -45,12 +45,12 @@ export default function ComplaintStatus() {
                     </tr>
                   </MDBTableBody>
                 </MDBTable>
-              </MDBCardBody>
-            </MDBCard>
-          </MDBCol>
-        </MDBRow>
-      </MDBContainer>
-      </div>
+      //         </MDBCardBody>
+      //       </MDBCard>
+      //     </MDBCol>
+      //   </MDBRow>
+      // </MDBContainer>
+      // </div>
     // </section>
   );
 }

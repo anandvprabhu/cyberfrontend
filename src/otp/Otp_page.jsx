@@ -10,9 +10,10 @@ const Otp_page = () => {
   const [error, setError] = useState("");
   const [number, setNumber] = useState("");
   const [flag, setFlag] = useState(false);
-  const [otp, setOtp] = useState("");
+  const [checkOtp, setCheckOtp] = useState(0);
   const [result, setResult] = useState("");
   const { setUpRecaptha } = useUserAuth();
+  const [otp,setOtp] = useState(0);
   const navigate = useNavigate();
 
   const getOtp = async (e) => {
@@ -23,23 +24,36 @@ const Otp_page = () => {
       return setError("Please enter a valid phone number!");
     try {
       const response = await setUpRecaptha(number);
-      console.log("response",response);
-      setResult(response);
+      setOtp(randomNumberInRange(100000,999999));
+      axios.get(` https://www.fast2sms.com/dev/bulkV2?authorization=783AnHyUWzxtfPv0hY9JL2qKwkVmbNpXgjQRuiEIdGM5roTCZOv1Z5DxU4h6AbVCIqWrnOBTzypwaloR&route=q&message=Use%20verification%20code%20:%20${otp}&language=english&flash=0&numbers=7012440501`)
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+    console.log(error.response.data);
+    });
+      // console.log("response",response);
+      // setResult(response);
       setFlag(true);
     } catch (err) {
       setError(err.message);
     }
   };
 
+  function randomNumberInRange(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
   const verifyOtp = async (e) => {
     e.preventDefault();
     setError("");
-    if (otp === "" || otp === null) return;
-    try {
-      await result.confirm(otp);
-      navigate("/");
-    } catch (err) {
-      setError(err.message);
+    if (checkOtp === "" || checkOtp === null) return;
+    if(checkOtp==otp)
+    {
+      navigate('/dashboard');
+    }
+    else{
+      setError("Wrong Otp entered")
     }
   };
 
@@ -74,7 +88,7 @@ const Otp_page = () => {
             <Form.Control
               type="otp"
               placeholder="Enter OTP"
-              onChange={(e) => setOtp(e.target.value)}
+              onChange={(e) => setCheckOtp(e.target.value)}
             />
           </Form.Group>
           <div className="button-right">

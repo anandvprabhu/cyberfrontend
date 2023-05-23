@@ -39,7 +39,7 @@ export default function AdminHome() {
         <MDBRow className="d-flex justify-content-center align-items-center">
           <MDBCol lg="9" xl="7">
             <MDBCard className="rounded-3">
-              <MDBCardBody className="p-4">
+              <MDBCardBody className="p-4" style={{position:"relative"}}>
                 <h4 className="text-center my-3 pb-3">Complaints</h4>
                 <MDBTable className="mb-4">
                   <MDBTableHead>
@@ -62,30 +62,27 @@ export default function AdminHome() {
                         </MDBBtn>
                       </td>
                     </tr>
-                    <Collapse in={open} timeout="auto" unmountOnExit>
-                    <List component="div" disablePadding className="flex">
-                      {/* <ListItemButton sx={{ pl: 4 }}>
-                        <ListItemIcon>
-                          <StarBorder/>
-                        </ListItemIcon>
-                        <ListItemText primary="Starred" />
-                      </ListItemButton>  */}
-                       <div className="" style={{flex:0.5}}><p>I lost my credit card on 27th april in jew town road</p></div> 
-                       {/* {"I lost my credit card on 27th april in jew town road"} */}
-                       <FormControl fullWidth style={{flex:0.5}}>
-                        <InputLabel id="demo-simple-select-label">Status</InputLabel>
-                        <Select
-                          labelId="demo-simple-select-label"
-                          id="demo-simple-select"
-                          onChange={handleChange}
-                          label="Age"
-                          value={age}>
-                          <MenuItem value={10}>In progress</MenuItem>
-                          <MenuItem value={20}>Checked</MenuItem>
-                        </Select>
-                      </FormControl>
-                    </List>
-                  </Collapse>
+                    <tr>
+                      <Collapse in={open} timeout="auto" unmountOnExit>
+                      <List component="div" disablePadding className="flex">
+                        <div className="" style={{flex:0.5}}><p>I lost my credit card on 27th april in jew town road
+                          aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p></div> 
+                        {/* {"I lost my credit card on 27th april in jew town road"} */}
+                        <FormControl fullWidth style={{flex:0.5}}>
+                          <InputLabel id="demo-simple-select-label">Status</InputLabel>
+                          <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            onChange={handleChange}
+                            label="Age"
+                            value={age}>
+                            <MenuItem value={10}>In progress</MenuItem>
+                            <MenuItem value={20}>Checked</MenuItem>
+                          </Select>
+                        </FormControl>
+                      </List>
+                    </Collapse>
+                  </tr>
                     <tr>
                       <th scope="row">2</th>
                       <td>Credit Card</td>
