@@ -6,7 +6,7 @@ import {
 } from 'mdb-react-ui-kit';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import '../news/newsItem.css'; 
-
+import { Link } from 'react-router-dom';
 import app  from "../firebase.js";
 import { doc, addDoc, collection, updateDoc, arrayUnion } from "firebase/firestore";
 import { getFirestore } from "firebase/firestore";
@@ -21,7 +21,8 @@ export default function RegForm() {
     const [subject,setSubject] = useState("");
     const navigate = useNavigate();
     const db = getFirestore(app);
-    
+    const [agreement,setAgreement] = useState(false);
+     
     useEffect(() => {
       const auth = getAuth();
       onAuthStateChanged(auth, (user) => {
@@ -108,7 +109,7 @@ export default function RegForm() {
 
     return (
     <form className="reg_form" onSubmit={handleSubmit}>
-      <h1 className="mb-3">Complaint Form</h1>
+      {/* <h1 className="mb-3">Complaint Form</h1> */}
       
       <div className="form-outline">
         <textarea className="form-control" id="textAreaExample1" rows="2"
@@ -124,7 +125,7 @@ export default function RegForm() {
       
       <p className="lead">*Input should be atleast 10 characters</p>
       
-      <MDBInput type='file' />
+      <MDBInput type='file' multiple/>
 
       <MDBCheckbox
         wrapperClass='d-flex justify-content-center mb-4'
@@ -132,14 +133,17 @@ export default function RegForm() {
         label='Send me a copy of this message'
         defaultChecked
       />
-
-      <MDBCheckbox
-        wrapperClass='d-flex justify-content-center mb-4'
-        id='form4Example4'
-        label='I have read the rules and regulations'
-      />
-
-      <MDBBtn type='submit' className='mb-4' block disabled={message.length<10}>Submit</MDBBtn>
+      
+        <MDBCheckbox
+          wrapperClass='d-flex justify-content-center mb-4'
+          id='form4Example4'
+          style={{marginLeft:"1%"}}
+          label={<Link to="https://www.indiacode.nic.in/show-data?actid=AC_CEN_5_24_00022_200753_1517807327089&sectionId=7868&sectionno=37&orderno=37">I have read the rules and regulations</Link>}
+          onChange={(e)=>setAgreement(e.target.checked)}
+        />
+      
+      {/* label='I have read the rules and regulations' */}
+      <MDBBtn type='submit' className='mb-4' block disabled={message.length<10 || !agreement}>Submit</MDBBtn>
     </form>
   );
 }

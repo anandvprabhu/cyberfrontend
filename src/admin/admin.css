@@ -5,6 +5,7 @@
 }
 .AdminHomeContainer
 {
+    /* position: absolute; */
     height: 100%;
     width: 100%;
     background-color:lightgrey;
@@ -15,7 +16,15 @@
     justify-content:space-evenly;
 }
 .MuiCollapse-wrapper.MuiCollapse-vertical.css-smkl36-MuiCollapse-wrapper {
-    width: auto;
     border: 1px solid black;
-    max-height: 20vh;
+    max-width: 23vw;
+    height: auto;
+    font-size: 1em;
+    display: inline-block;
+    word-break: break-all;
 }
+/* .py-5
+{
+    height: 100%;
+    width: 100%;
+} */
