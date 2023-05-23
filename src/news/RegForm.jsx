@@ -98,9 +98,19 @@ export default function RegForm() {
         pri = priorityMapper[response[0][0].label];
       });
 
+      //Date finder
+      const date = new Date();
+      let day = date.getDate();
+      let month = date.getMonth() + 1;
+      let year = date.getFullYear();
+      // This arrangement can be altered based on how we want the date's format to appear.
+      let newDate = `${day}-${month}-${year}`;
+      //console.log(currentDate); // "17-6-2022"
+
       const data = {
         message,
         subject,
+        date: newDate,
         email: complaintee,
         department: dept,
         status: null,

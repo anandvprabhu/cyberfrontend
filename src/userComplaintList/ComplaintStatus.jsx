@@ -26,6 +26,7 @@ let complaintDataArray = [];
 export default function ComplaintStatus() {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
  
   useEffect(() => {
     const auth = getAuth();
@@ -54,8 +55,8 @@ export default function ComplaintStatus() {
     }    
 
     getComplaintData();
-
-  }, []);
+    setLoading(false);
+  }, [loading, user]);
   
   return (
     <MDBTable className="mb-4">
@@ -63,8 +64,8 @@ export default function ComplaintStatus() {
         <tr>
           <th scope="col"><b>CID</b></th>
           <th scope="col"><b>Subject</b></th>
-          <th scope="col"><b>Registered date</b></th>
           <th scope="col"><b>Status</b></th>
+          <th scope="col"><b>Registered date</b></th>
         </tr>
       </MDBTableHead>
       <MDBTableBody>
@@ -75,7 +76,7 @@ export default function ComplaintStatus() {
               subject={complaint.subject}
               id={complaint.complaintId}
               status={complaint.status}
-              date={complaint.priority} 
+              date={complaint.date} 
             />
           )
         })}

@@ -7,6 +7,7 @@ import NewsList from "./news/NewsList";
 import RegForm from "./news/RegForm";
 import AdminHome from "./admin/AdminHome";
 import ComplaintStatus from "./userComplaintList/ComplaintStatus";
+import DeptHome from "./deptComplaintList.jsx/DeptHome";
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
             <Route path="/form" element={<RegForm/>}/>
             <Route path="/admin" element={<AdminHome/>}/>
             <Route path="/track" element={<ComplaintStatus/>}/>
+            <Route path="/dept" element={<DeptHome/>}/>
           </Routes>
         </BrowserRouter>
       </UserAuthContextProvider>

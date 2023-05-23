@@ -18,14 +18,16 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { collection, getDocs, getFirestore } from "firebase/firestore";
-import AdminItem from './AdminItem';
+import DeptItem from './DeptItem';
+import { query, where } from "firebase/firestore";
 
 const db = getFirestore(app);
 let complaintDataArray = [];
 
-export default function AdminHome() {
+export default function DeptHome() {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+  const [userEmail, setUserEmail] = useState('');
   
 
 
@@ -36,26 +38,41 @@ export default function AdminHome() {
       if (user) {
         //setComplaintee(user.email);
         console.log("Current User: " + user.email);
+        setUserEmail(user.email);
       } else {
         console.log("User not found");
         navigate('/');
       }
     });  
 
+    const accountMapper = {
+      "accounts@cyber.com": "ACCOUNTS",
+      "dept@cyber.com": "DEBT",
+      "credit@cyber.com": "CREDIT",
+      "loan@cyber.com": "LOAN",
+      "creditcard@cyber.com": "CREDIT CARD",
+      "other@cyber.com": "OTHER"
+    }
+
     const getComplaintData = async () => {
       console.log("Get data func");
-      const querySnapshot = await getDocs(collection(db, "complaints"));
+      let tempDept = accountMapper[userEmail];
+      console.log(tempDept);
+      const q = query(collection(db, "complaints"), where("department", "==", tempDept));
+
+      const querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc) => {
         //console.log(doc.id, " => ", doc.data());
         complaintDataArray.push(doc.data());
-        console.log("PUSHED");
+        console.log("Puched");
       });
+      console.log("out of method");
       setLoading(false);
     }    
 
     getComplaintData();
 
-  }, [loading]);
+  }, [loading, userEmail]);
 
 
   return (
@@ -79,7 +96,7 @@ export default function AdminHome() {
                   <MDBTableBody>
                     {complaintDataArray.map((complaint, index) => {
                       return(
-                        <AdminItem
+                        <DeptItem
                           key={index}
                           id={complaint.complaintId}
                           subject={complaint.subject}
