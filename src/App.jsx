@@ -6,7 +6,7 @@ import { UserAuthContextProvider } from "./context/UserAuthContext";
 import NewsList from "./news/NewsList";
 import RegForm from "./news/RegForm";
 import AdminHome from "./admin/AdminHome";
-import ComplaintStatus from "./news/ComplaintStatus";
+import ComplaintStatus from "./userComplaintList/ComplaintStatus";
 
 function App() {
 

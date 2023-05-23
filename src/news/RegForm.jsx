@@ -70,25 +70,38 @@ export default function RegForm() {
       let dept;
       let pri;
       
+      const classMapper = {
+        "LABEL_0": "ACCOUNTS",
+        "LABEL_1": "DEBT",
+        "LABEL_2": "CREDIT",
+        "LABEL_3": "LOAN",
+        "LABEL_4": "CREDIT CARD",
+        "LABEL_5": "OTHER"
+      }
+
+      const priorityMapper = {
+        "LABEL_0": "URGENT",
+        "LABEL_1": "NEUTRAL"
+      }
+
       // Request to model 1 for dept
       await classify({"inputs": message})
       .then((response) => {
         console.log("Department: " + response[0][0].label);
-        dept = response[0][0].label;
+        dept = classMapper[response[0][0].label];
       });
       
       // Request to model 2 for priority
       await priority({"inputs": message})
       .then((response) => {
         console.log("Priority: " + response[0][0].label);
-        pri = response[0][0].label;
+        pri = priorityMapper[response[0][0].label];
       });
-
-      console.log("dept from var: "+ dept);
-      console.log("pri from var: "+ pri);
 
       const data = {
         message,
+        subject,
+        email: complaintee,
         department: dept,
         status: null,
         priority: pri,
@@ -105,6 +118,14 @@ export default function RegForm() {
       await updateDoc(userDoc, {
         complaints: arrayUnion(docRef.id)
       });
+
+      let temp = String(docRef.id);
+      let cId = data.department + "-" + temp.substring(0, 5);
+      const newComplaintDoc = doc(db, "complaints", docRef.id);
+      await updateDoc(newComplaintDoc, {
+        complaintId:  cId
+      });
+      console.log("Complaintee: " + cId);
     }
 
     return (

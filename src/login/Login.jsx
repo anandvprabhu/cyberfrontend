@@ -86,7 +86,7 @@ function Login() {
             <MDBCardBody className='d-flex flex-column'>
             <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
               
-              <h5 className="fw-normal my-4 pb-3" style={{letterSpacing: '1px'}}>Cyber Complaint Automation System</h5>
+              <h2 className="fw-bold my-4 pb-3" style={{letterSpacing: '1px'}}>Cyber Complaint Automation System</h2>
 
               <div className='d-flex flex-row mt-1'>
                 {/* <MDBIcon fas icon="cubes fa-3x me-3" style={{ color: '#ff6219' }}/>😄 */}

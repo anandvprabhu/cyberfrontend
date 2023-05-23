@@ -30,6 +30,7 @@ export default function AdminHome() {
   
   const handleChange = (event) => {
     setAge(event.target.value);
+    console.log(event.target.value);
   };
   console.log(age);
   return (
@@ -44,9 +45,9 @@ export default function AdminHome() {
                 <MDBTable className="mb-4">
                   <MDBTableHead>
                     <tr>
-                      <th scope="col"><b>No.</b></th>
-                      <th scope="col"><b>Category</b></th>
-                      <th scope="col"><b>Status</b></th>
+                      <th scope="col"><b>CID</b></th>
+                      <th scope="col"><b>Subject</b></th>
+                      <th scope="col"><b></b></th>
                       <th scope="col"><b>Action</b></th>
                     </tr>
                   </MDBTableHead>

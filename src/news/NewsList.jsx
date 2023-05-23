@@ -3,7 +3,6 @@ import axios from 'axios'
 import NewsItem from './NewsItem'
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import '../news/newsItem.css';
-// import 'bootstrap/dist/css/bootstrap.min.css';
 import {
     MDBBtn,
     MDBModal,
@@ -14,27 +13,19 @@ import {
     MDBModalBody,
     MDBModalFooter,
   } from 'mdb-react-ui-kit';
-// import {Helmet} from "react-helmet";
 import RegForm from './RegForm';
-import ComplaintStatus from './ComplaintStatus';
-// import { Link } from 'react-router-dom';
-// import Popup from 'reactjs-popup';
-// import 'reactjs-popup/dist/index.css';
-
-
-// require('dotenv').config({ path: '../../.env' })
+import ComplaintStatus from '../userComplaintList/ComplaintStatus';
 
 const NewsList = () => {
     const [articles, setArticles] = useState([])
 
     useEffect(() => {
-        const getArticles = async () => {
-            const response = await axios.get(`https://newsapi.org/v2/everything?q=cyber+news&apiKey=441cee269ba9433fae71d6420cc01c1b`)
-            setArticles(response.data.articles)
-            console.log(response)
-        }
-
-        getArticles()
+      const getArticles = async () => {
+        const response = await axios.get(`https://newsapi.org/v2/everything?q=cyber+news&apiKey=441cee269ba9433fae71d6420cc01c1b`)
+        setArticles(response.data.articles)
+        console.log(response)
+      }
+      getArticles();
     }, [])
 
     const [showForm, setFormStatus] = useState(false);
@@ -46,41 +37,32 @@ const NewsList = () => {
     const toggleShow2 = () => setBasicModal2(!basicModal2)
 
     const handleSignOut = ()=>{
-        //handle signout using firebase and redirect to login
+      //handle signout using firebase and redirect to login
     }
 
-    return (
-        <div>
-             {/* <Helmet>
-                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"/> 
-                <script src="https://cdn.jsdelivr.net/npm/react/umd/react.production.min.js" crossorigin></script>
-                <script src="https://cdn.jsdelivr.net/npm/react-dom/umd/react-dom.production.min.js"crossorigin></script>
-                <script src="https://cdn.jsdelivr.net/npm/react-bootstrap@next/dist/react-bootstrap.min.js" crossorigin></script>
-                </Helmet> */}
-            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <div class="container-fluid">
-            <a class="navbar-brand" href="#">CCAS</a>
-            <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                {/* <a class="nav-link" href="#" onClick={viewData}><Link className='form_link' to="/form">Register complaint</Link></a> */}
-                {/* <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Open modal</button> */}
+  return (
+    <div>
+      <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div className="container-fluid">
+          <a className="navbar-brand" href="#">CCAS</a>
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav">
+              <li className="nav-item">
                 <MDBBtn onClick={toggleShow}>Register complaint</MDBBtn>
-                </li>
-                <li class="nav-item" style={{marginRight:"3%"}}>
-                {/* <a class="nav-link" href="#">Track complaint</a> */}
+              </li>
+              <li className="nav-item" style={{marginRight:"3%"}}>
                 <MDBBtn onClick={toggleShow2}>Track complaint</MDBBtn>
-                </li>
-                <li class="nav-item" style={{marginRight:"3%"}}>
+              </li>
+              <li className="nav-item" style={{marginRight:"3%"}}>
                 <MDBBtn onClick={handleSignOut}>Sign Out</MDBBtn>
-                </li>
+              </li>
             </ul>
-            </div>
-            </div>
-            </nav>
-            
-            {/* form popup */}
-            <MDBModal show={basicModal} setShow={setBasicModal} tabIndex='-1'>
+          </div>
+        </div>
+      </nav>
+          
+
+      <MDBModal show={basicModal} setShow={setBasicModal} tabIndex='-1'>
         <MDBModalDialog>
           <MDBModalContent>
             <MDBModalHeader>
@@ -94,7 +76,7 @@ const NewsList = () => {
         </MDBModalDialog>
       </MDBModal>
 
-            {/* status popup */}
+      {/* status popup */}
       <MDBModal show={basicModal2} setShow={setBasicModal2} tabIndex='-1'>
         <MDBModalDialog>
           <MDBModalContent>
@@ -108,22 +90,23 @@ const NewsList = () => {
           </MDBModalContent>
         </MDBModalDialog>
       </MDBModal>
-        
-        {/* news dashboard */}
-        <h1 className='news_heading'>Breaking News</h1>
-        {articles.map(article => {
-            return(
-                <NewsItem 
-                    title={article.title}
-                    description={article.description}
-                    url={article.url}
-                    urlToImage={article.urlToImage} 
-                />
-            )
-        })}
+      
+      {/* news dashboard */}
+      <h1 className='news_heading'>Breaking News</h1>
+      {articles.map((article, index) => {
+          return(
+              <NewsItem 
+                key={index}
+                title={article.title}
+                description={article.description}
+                url={article.url}
+                urlToImage={article.urlToImage} 
+              />
+          )
+      })}
 
-        </div>
-    )
+    </div>
+  )
 }
 
 export default NewsList
