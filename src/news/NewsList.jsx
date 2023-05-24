@@ -15,10 +15,14 @@ import {
   } from 'mdb-react-ui-kit';
 import RegForm from './RegForm';
 import ComplaintStatus from '../userComplaintList/ComplaintStatus';
+import { getAuth, signOut } from "firebase/auth";
+import { useNavigate } from 'react-router-dom';
+
 
 const NewsList = () => {
     const [articles, setArticles] = useState([])
-
+    const navigate = useNavigate();
+    const auth = getAuth();
     useEffect(() => {
       const getArticles = async () => {
         const response = await axios.get(`https://newsapi.org/v2/everything?q=cyber+news&apiKey=441cee269ba9433fae71d6420cc01c1b`)
@@ -38,6 +42,13 @@ const NewsList = () => {
 
     const handleSignOut = ()=>{
       //handle signout using firebase and redirect to login
+      signOut(auth).then(() => {
+        // Sign-out successful.
+        navigate('/');
+      }).catch((error) => {
+        // An error happened.
+      });
+
     }
 
   return (
