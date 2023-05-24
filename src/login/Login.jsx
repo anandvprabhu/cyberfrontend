@@ -52,9 +52,15 @@ function Login() {
     signInWithEmailAndPassword(auth, user, pwd)
     .then((userCredential) => {
       // Signed in 
-      const user = userCredential.user;
-      console.log("User logged In");
-      navigate('/dashboard');
+      //const user = userCredential.user;
+      console.log("User logged In : "+user);
+      if(user=="admin@cyber.com"){
+        navigate('/admin');
+      } else if(user=="debt@cyber.com" || user=="cre@cyber.com" || user=="debt@cyber.com" || user=="debt@cyber.com" || user=="debt@cyber.com"){
+        navigate('/dept');
+      } else {
+        navigate('/dashboard');
+      }
       // ...
     })
     .catch((error) => {
