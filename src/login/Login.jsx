@@ -77,17 +77,18 @@ function Login() {
 
   return (
     <MDBContainer className="my-5">
-      <MDBCard>
+      <MDBCard style={{boxShadow:"none"}}>
         <MDBRow className='g-0'>
 
           <MDBCol md='6'>
-            {articles.map(article => {
+            {articles.map((article, index) => {
                   return(
                       <NewsItem 
-                          title={article.title}
-                          description={article.description}
-                          url={article.url}
-                          urlToImage={article.urlToImage} 
+                        key={index}
+                        title={article.title}
+                        description={article.description}
+                        url={article.url}
+                        urlToImage={article.urlToImage} 
                       />
                   )
               })}
