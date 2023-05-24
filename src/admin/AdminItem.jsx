@@ -60,7 +60,7 @@ const AdminItem = ({ id, subject, dept, priority, message, uID }) => {
                 <td>{dept}</td>
                 <td>{priority}</td>
                 <td>
-                <MDBBtn onClick={toggleShow}>View</MDBBtn>
+                    <MDBBtn onClick={toggleShow}>View</MDBBtn>
                 </td>
             </tr>
             <tr>
