@@ -14,7 +14,7 @@ import {
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import '../admin/admin.css';
 import app  from "../firebase.js";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { collection, getDocs, getFirestore } from "firebase/firestore";
@@ -26,10 +26,9 @@ let complaintDataArray = [];
 export default function AdminHome() {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-  
+  const auth = getAuth();
 
-
-  useEffect(() => {
+    useEffect(() => {
     const auth = getAuth();
 
     onAuthStateChanged(auth, (user) => {
@@ -58,6 +57,16 @@ export default function AdminHome() {
   }, [loading]);
 
 
+  const handleSignOut = ()=>{
+    //handle signout using firebase and redirect to login
+    signOut(auth).then(() => {
+      // Sign-out successful.
+      navigate('/');
+    }).catch((error) => {
+      // An error happened.
+    })
+  };
+
   return (
     <div className="AdminHomeContainer">
       <MDBContainer className="py-5 h-100">
@@ -65,7 +74,8 @@ export default function AdminHome() {
           <MDBCol lg="9" xl="7">
             <MDBCard className="rounded-3">
               <MDBCardBody className="p-4" style={{position:"relative"}}>
-                <h4 className="text-center my-3 pb-3">Complaints</h4>
+                <h4 className="text-center">Complaints</h4>
+                <h6 className="text-center my-3 pb-3" onClick={handleSignOut} >Sign out</h6>
                 <MDBTable className="mb-4">
                   <MDBTableHead>
                     <tr>
