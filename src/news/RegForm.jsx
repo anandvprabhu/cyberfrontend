@@ -113,9 +113,10 @@ export default function RegForm() {
         date: newDate,
         email: complaintee,
         department: dept,
-        status: null,
+        status: "Received the complaint",
         priority: pri,
-        complaintId : null
+        complaintId : null,
+        uID: null
       };
 
       console.log("Data : " + data.department);
@@ -133,7 +134,8 @@ export default function RegForm() {
       let cId = data.department + "-" + temp.substring(0, 5);
       const newComplaintDoc = doc(db, "complaints", docRef.id);
       await updateDoc(newComplaintDoc, {
-        complaintId:  cId
+        complaintId:  cId,
+        uID: docRef.id
       });
       console.log("Complaintee: " + cId);
     }

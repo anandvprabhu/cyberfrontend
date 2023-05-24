@@ -86,6 +86,7 @@ export default function AdminHome() {
                           dept={complaint.department}
                           priority={complaint.priority} 
                           message={complaint.message}
+                          uID={complaint.uID}
                         />
                       )
                     })}

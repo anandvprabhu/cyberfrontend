@@ -5,7 +5,7 @@
 }
 .AdminHomeContainer
 {
-    /* position: absolute; */
+    /* position: absolute;  */
     height: 100%;
     width: 100%;
     background-color:lightgrey;
@@ -23,8 +23,37 @@
     display: inline-block;
     word-break: break-all;
 }
-/* .py-5
+.App {
+    font-family: sans-serif;
+    text-align: center;
+}
+.complaintContainer
 {
-    height: 100%;
+    min-height: 50vh;
+    height: auto;
     width: 100%;
-} */
+    display: flex;
+    flex-wrap: wrap;
+}
+.complaintSubContainer
+{
+    /* border:2px solid green; */
+    height:auto;
+    flex: 0.5;
+    text-align: center;
+    align-items: center;
+    display: inline-block;
+    word-wrap: break-word;
+    padding:3%;
+    /* flex-wrap: wrap; */
+}
+.csc2
+{
+    border-left:2px dotted grey;
+    /* border-width:"thin"; */
+}
+.modal-css {
+    position: absolute;
+    /* width: 1000px; */
+
+}
