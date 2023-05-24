@@ -52,9 +52,20 @@ function Login() {
     signInWithEmailAndPassword(auth, user, pwd)
     .then((userCredential) => {
       // Signed in 
-      const user = userCredential.user;
-      console.log("User logged In");
-      navigate('/dashboard');
+      //const user = userCredential.user;
+      console.log("User logged In : "+user);
+      if(user=="admin@cyber.com"){
+        navigate('/admin');
+      } else if(user=="debt@cyber.com" || 
+                user=="credit@cyber.com" || 
+                user=="creditcard@cyber.com" || 
+                user=="loan@cyber.com" || 
+                user=="accounts@cyber.com" || 
+                user=="other@cyber.com"){
+        navigate('/dept');
+      } else {
+        navigate('/dashboard');
+      }
       // ...
     })
     .catch((error) => {
@@ -66,17 +77,18 @@ function Login() {
 
   return (
     <MDBContainer className="my-5">
-      <MDBCard>
+      <MDBCard style={{boxShadow:"none"}}>
         <MDBRow className='g-0'>
 
           <MDBCol md='6'>
-            {articles.map(article => {
+            {articles.map((article, index) => {
                   return(
                       <NewsItem 
-                          title={article.title}
-                          description={article.description}
-                          url={article.url}
-                          urlToImage={article.urlToImage} 
+                        key={index}
+                        title={article.title}
+                        description={article.description}
+                        url={article.url}
+                        urlToImage={article.urlToImage} 
                       />
                   )
               })}
@@ -86,7 +98,7 @@ function Login() {
             <MDBCardBody className='d-flex flex-column'>
             <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
               
-              <h5 className="fw-normal my-4 pb-3" style={{letterSpacing: '1px'}}>Cyber Complaint Automation System</h5>
+              <h2 className="fw-bold my-4 pb-3" style={{letterSpacing: '1px'}}>Cyber Complaint Automation System</h2>
 
               <div className='d-flex flex-row mt-1'>
                 {/* <MDBIcon fas icon="cubes fa-3x me-3" style={{ color: '#ff6219' }}/>😄 */}
